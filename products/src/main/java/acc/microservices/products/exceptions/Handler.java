@@ -13,8 +13,15 @@ public class Handler extends ResponseEntityExceptionHandler {
   private ErrorDto errorDto = ErrorDto.builder().build();
 
   @ExceptionHandler(value = NotFoundException.class)
-  protected ResponseEntity<ErrorDto> handleConflict(RuntimeException ex) {
-    errorDto.setError(ex.getMessage());
+  protected ResponseEntity<ErrorDto> handleNotFoundException(RuntimeException ex) {
+    errorDto.setMessage(ex.getMessage());
+    return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(errorDto);
+  }
+
+  @ExceptionHandler(value = ValidationErrorsException.class)
+  protected ResponseEntity<ErrorDto> handleValidationErrorException(ValidationErrorsException ex) {
+    errorDto.setMessage(ex.getMessage());
+    errorDto.setErrors(ex.buildErrorsList());
     return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(errorDto);
   }
 }

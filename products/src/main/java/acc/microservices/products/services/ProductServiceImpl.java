@@ -53,6 +53,7 @@ public class ProductServiceImpl implements ProductService {
     productToUpdate.setName(product.getName());
     productToUpdate.setPrice(product.getPrice());
     productToUpdate.setStock(product.getStock());
+    productToUpdate.setStatus("UPDATED");
     return this.productRepository.save(productToUpdate);
   }
 
