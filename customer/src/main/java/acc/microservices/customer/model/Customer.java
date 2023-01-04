@@ -28,7 +28,7 @@ public class Customer {
   @NotEmpty(message = "El número de documento no puede ser vacío.")
   @Size(min = 10, max = 10, message = "Tamano de CI debe ser 10.")
   @Column(unique = true, length = 10, nullable = false)
-  private String ci;
+  private String CI;
 
   @NotEmpty(message = "El nombre no puede ser vacío.")
   private String firstName;
