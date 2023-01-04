@@ -1,17 +1,17 @@
 INSERT INTO
   REGION (id, name)
 VALUES
-  (1, 'Sudamérica');
+  (1, 'Sudamerica');
 
 INSERT INTO
   REGION (id, name)
 VALUES
-  (2, 'Centroamérica');
+  (2, 'Centroamerica');
 
 INSERT INTO
   REGION (id, name)
 VALUES
-  (3, 'Norteamérica');
+  (3, 'Norteamerica');
 
 INSERT INTO
   REGION (id, name)
@@ -41,22 +41,20 @@ VALUES
 INSERT INTO
   CUSTOMER(
     id,
-    number_id,
+    ci,
     first_name,
     last_name,
     email,
-    photo_url,
-    region_id,
+    fk_region,
     state
   )
 VALUES
 (
     1,
-    '32404580',
-    'Andrés',
+    '1712345678',
+    'Andres',
     'Guzmán',
-    'profesor@bolsadeideas.com',
-    '',
+    'mijotron@gmail.com',
     1,
     'CREATED'
   );

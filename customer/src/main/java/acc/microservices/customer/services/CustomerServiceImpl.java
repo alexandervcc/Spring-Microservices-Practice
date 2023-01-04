@@ -3,13 +3,13 @@ package acc.microservices.customer.services;
 import java.util.List;
 import java.util.Optional;
 
-import org.jvnet.hk2.annotations.Service;
+import org.springframework.stereotype.Service;
 
+import acc.microservices.customer.exceptions.NotFoundException;
 import acc.microservices.customer.model.Customer;
 import acc.microservices.customer.model.Region;
 import acc.microservices.customer.repository.CustomerRepository;
 import acc.microservices.customer.services.interfaces.CustomerService;
-import jakarta.ws.rs.NotFoundException;
 import lombok.AllArgsConstructor;
 
 @Service
