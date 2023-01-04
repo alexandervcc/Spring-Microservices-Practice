@@ -45,8 +45,8 @@ public class CustomerServiceImpl implements CustomerService {
   }
 
   @Override
-  public Customer deleteCustomer(Customer customer) {
-    Customer customerDB = this.getCustomer(customer.getId());
+  public Customer deleteCustomer(Long customerId) {
+    Customer customerDB = this.getCustomer(customerId);
 
     customerDB.setState("DELETED");
     return customerRepository.save(customerDB);
