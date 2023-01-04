@@ -1,0 +1,15 @@
+server:
+  port: 8081
+
+#Ruta de archivos de configuracion para cada microservicio
+spring:
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/alexandervcc/Spring-Microservices-Project
+          searchPaths: config-files
+  security:
+    user:
+      name: root
+      password: secret
