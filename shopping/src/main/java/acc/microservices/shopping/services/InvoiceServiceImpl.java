@@ -45,8 +45,8 @@ public class InvoiceServiceImpl implements InvoiceService {
   }
 
   @Override
-  public Invoice deleteInvoice(Invoice invoice) {
-    Invoice invoiceDB = getInvoice(invoice.getId());
+  public Invoice deleteInvoice(Long invoiceId) {
+    Invoice invoiceDB = getInvoice(invoiceId);
     invoiceDB.setState("DELETED");
     return invoiceRepository.save(invoiceDB);
   }
