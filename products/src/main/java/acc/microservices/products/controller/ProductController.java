@@ -53,8 +53,8 @@ public class ProductController {
      if (validationResult.hasErrors()) {
       throw new ValidationErrorsException("Errors on sent attributes.", validationResult);
     }
-    //Product product = this.productService.createProduct(productData); */
-    return ResponseEntity.status(HttpStatus.CREATED).body("xd");
+    Product product = this.productService.createProduct(productData); 
+    return ResponseEntity.status(HttpStatus.CREATED).body(product);
   }
 
   @PutMapping(path = "/{id}")
