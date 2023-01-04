@@ -1,17 +1,17 @@
 server:
-  port: 8092
-
+  port: 8093
 spring:
   h2:
     console:
       enabled: true
   datasource:
-    url: jdbc:h2:mem:customerDB;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE
+    url: jdbc:h2:mem:invoiceDB;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE
     driverClassName: org.h2.Driver
     platform: h2
     username: sa
     password:
 
+  # JPA / HIBERNATE
   jpa:
     show-sql: true
     hibernate:
