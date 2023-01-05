@@ -1,0 +1,34 @@
+{
+  "configurations": [
+    {
+      "type": "java",
+      "name": "Spring Boot-CustomerApplication<customer>",
+      "request": "launch",
+      "cwd": "${workspaceFolder}",
+      "mainClass": "acc.microservices.customer.CustomerApplication",
+      "projectName": "customer",
+      "args": "",
+      "envFile": "${workspaceFolder}/.env"
+    },
+    {
+      "type": "java",
+      "name": "Spring Boot-DiscoveryServiceApplication<discovery-service>",
+      "request": "launch",
+      "cwd": "${workspaceFolder}",
+      "mainClass": "acc.microservices.discoveryservice.DiscoveryServiceApplication",
+      "projectName": "discovery-service",
+      "args": "",
+      "envFile": "${workspaceFolder}/.env"
+    },
+    {
+      "type": "java",
+      "name": "Spring Boot-ProductsApplication<products>",
+      "request": "launch",
+      "cwd": "${workspaceFolder}",
+      "mainClass": "acc.microservices.products.ProductsApplication",
+      "projectName": "products",
+      "args": "",
+      "envFile": "${workspaceFolder}/.env"
+    }
+  ]
+}
