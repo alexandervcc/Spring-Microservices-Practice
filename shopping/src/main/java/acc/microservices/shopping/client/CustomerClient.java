@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 
 import acc.microservices.shopping.model.pojos.Customer;
 
-@FeignClient(name = "customer-service")
+@FeignClient(name = "customer-service", fallback = CustomerHystrixFallback.class)
 public interface CustomerClient {
   final String CUSTOMER_PATH = "/api/v1/customer";
 

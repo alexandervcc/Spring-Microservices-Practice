@@ -31,10 +31,11 @@ eureka:
       defaultZone: http://localhost:8099/eureka/
 
 #Activar hystrix con feign
-Feign:
+feign:
   hystrix:
     enabled: true
-
+  circuitbreaker:
+    enabled: true
 #Activar actuator
 management:
   endpoints:
