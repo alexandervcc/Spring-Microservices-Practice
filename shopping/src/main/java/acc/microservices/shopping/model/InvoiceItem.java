@@ -14,7 +14,7 @@ import lombok.Data;
 public class InvoiceItem {
 
   public InvoiceItem() {
-    this.quantity = (double) 0;
+    this.quantity = (int) 0;
     this.price = (double) 0;
   }
 
@@ -23,7 +23,7 @@ public class InvoiceItem {
   private Long id;
 
   @Positive(message = "El stock debe ser mayor que cero.")
-  private Double quantity;
+  private Integer quantity;
 
   @Positive(message = "El precio debe ser mayor que cero.")
   private Double price;

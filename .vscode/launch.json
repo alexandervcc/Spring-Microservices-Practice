@@ -8,7 +8,8 @@
       "mainClass": "acc.microservices.customer.CustomerApplication",
       "projectName": "customer",
       "args": "",
-      "envFile": "${workspaceFolder}/.env"
+      "envFile": "${workspaceFolder}/.env",
+      "vmArgs": " -Dcom.sun.management.jmxremote -Dcom.sun.management.jmxremote.port=62943 -Dcom.sun.management.jmxremote.authenticate=false -Dcom.sun.management.jmxremote.ssl=false -Dspring.jmx.enabled=true -Djava.rmi.server.hostname=localhost -Dspring.application.admin.enabled=true -Dspring.boot.project.name=customer"
     },
     {
       "type": "java",
@@ -28,7 +29,8 @@
       "mainClass": "acc.microservices.products.ProductsApplication",
       "projectName": "products",
       "args": "",
-      "envFile": "${workspaceFolder}/.env"
+      "envFile": "${workspaceFolder}/.env",
+      "vmArgs": " -Dcom.sun.management.jmxremote -Dcom.sun.management.jmxremote.port=63023 -Dcom.sun.management.jmxremote.authenticate=false -Dcom.sun.management.jmxremote.ssl=false -Dspring.jmx.enabled=true -Djava.rmi.server.hostname=localhost -Dspring.application.admin.enabled=true -Dspring.boot.project.name=products"
     },
     {
       "type": "java",
@@ -37,6 +39,17 @@
       "cwd": "${workspaceFolder}",
       "mainClass": "acc.microservices.configservice.ConfigServiceApplication",
       "projectName": "config-service",
+      "args": "",
+      "envFile": "${workspaceFolder}/.env",
+      "vmArgs": " -Dcom.sun.management.jmxremote -Dcom.sun.management.jmxremote.port=62876 -Dcom.sun.management.jmxremote.authenticate=false -Dcom.sun.management.jmxremote.ssl=false -Dspring.jmx.enabled=true -Djava.rmi.server.hostname=localhost -Dspring.application.admin.enabled=true -Dspring.boot.project.name=config-service"
+    },
+    {
+      "type": "java",
+      "name": "Spring Boot-ShoppingApplication<shopping>",
+      "request": "launch",
+      "cwd": "${workspaceFolder}",
+      "mainClass": "acc.microservices.shopping.ShoppingApplication",
+      "projectName": "shopping",
       "args": "",
       "envFile": "${workspaceFolder}/.env"
     }

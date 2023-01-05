@@ -60,7 +60,7 @@ public class ProductServiceImpl implements ProductService {
   @Override
   public Product updateStock(Long id, Integer qty) {
     Product product = this.getProductById(id);
-    product.setStock(qty);
+    product.setStock(product.getStock() - qty);
     return this.productRepository.save(product);
   }
 
