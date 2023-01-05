@@ -11,8 +11,8 @@ public class CustomerHystrixFallback implements CustomerClient {
 
   @Override
   public ResponseEntity<Customer> getCustomer(long id) {
-    Customer customer = Customer.builder().build();
-    return ResponseEntity.badRequest().body(customer);
+    Customer customer = Customer.builder().id(id).build();
+    return ResponseEntity.ok(customer);
   }
 
 }
