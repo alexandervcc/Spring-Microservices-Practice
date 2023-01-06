@@ -32,8 +32,6 @@ eureka:
 
 #Activar hystrix con feign
 feign:
-  hystrix:
-    enabled: true
   circuitbreaker:
     enabled: true
 #Activar actuator
