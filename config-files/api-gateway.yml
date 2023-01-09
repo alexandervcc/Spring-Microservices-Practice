@@ -1,9 +1,11 @@
 server:
   port: 8080
+
 eureka:
   client:
     serviceUrl:
       defaultZone: http://localhost:8099/eureka/
+
 spring:
   cloud:
     gateway:
@@ -22,4 +24,4 @@ spring:
       - id: shopping-service
         uri: lb://shopping-service
         predicates:
-        - Path=/shopping/**
+        - Path=/invoice/**
