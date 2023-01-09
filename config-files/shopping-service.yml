@@ -24,7 +24,10 @@ spring:
         show_sql: true
         use_sql_comments: false
         format_sql: false
-
+  cloud:
+    openfeign:
+      circuitbreaker:
+        enabled: true
 eureka:
   client:
     serviceUrl:
@@ -37,26 +40,24 @@ management:
       exposure:
         include: "*"
 
-        
-#Resilience4j configuration
-resilience4j.circuitbreaker:
-    instances:
-        customer-service:
-            registerHealthIndicator: true
-            slidingWindowSize: 10
-            permittedNumberOfCallsInHalfOpenState: 3
-            slidingWindowType: TIME_BASED
-            minimumNumberOfCalls: 4
-            waitDurationInOpenState: 5s
-            failureRateThreshold: 50
-            eventConsumerBufferSize: 10
-        product-service:
-            registerHealthIndicator: true
-            slidingWindowSize: 10
-            permittedNumberOfCallsInHalfOpenState: 3
-            slidingWindowType: TIME_BASED
-            minimumNumberOfCalls: 4
-            waitDurationInOpenState: 5s
-            failureRateThreshold: 50
-            eventConsumerBufferSize: 10
-            
+#Feign Config
+feign:                          
+  circuitbreaker:               
+    enabled: true               
+    alphanumeric-ids:           
+      enabled: true             
+
+#Circuit Breaker Config
+resilience4j:                   
+  circuitbreaker:               
+    instances:                  
+      customer-service:
+        registerHealthIndicator: true
+        slidingWindowSize: 10
+        permittedNumberOfCallsInHalfOpenState: 3
+        slidingWindowType: TIME_BASED
+        minimumNumberOfCalls: 20
+        waitDurationInOpenState: 50s
+        failureRateThreshold: 50
+        eventConsumerBufferSize: 10
+
