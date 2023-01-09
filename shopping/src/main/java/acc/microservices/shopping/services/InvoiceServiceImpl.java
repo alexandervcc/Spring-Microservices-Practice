@@ -4,10 +4,8 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
-import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
-import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 
 import acc.microservices.shopping.client.CustomerClient;
 import acc.microservices.shopping.client.ProductClient;
@@ -69,7 +67,6 @@ public class InvoiceServiceImpl implements InvoiceService {
   }
 
   @Override
-  @HystrixCommand(fallbackMethod = "getCustomer")
   public Invoice getInvoice(Long id) {
     Invoice invoice = invoiceRepository.findById(id)
         .orElseThrow(() -> new NotFoundException("Invoice NOT found for provided Id."));
@@ -81,6 +78,7 @@ public class InvoiceServiceImpl implements InvoiceService {
       invoiceItem.setProduct(p);
       return invoiceItem;
     }).collect(Collectors.toList());
+
     
     invoice.setCustomer(customer);
     invoice.setItems(listInvoiceItems);
