@@ -11,14 +11,14 @@ spring:
     gateway:
       routes:
       - id: customer
-        uri: lb://CUSTOMER-SERVICE
+        uri: lb://customer-service
         predicates:
         - Path=/customer/**
       - id: product
-        uri: lb://PRODUCT-SERVICE
+        uri: lb://product-service
         predicates:
         - Path=/product/**
       - id: shopping
-        uri: lb://SHOPPING-SERVICE
+        uri: lb://shopping-service
         predicates:
         - Path=/invoice/**
