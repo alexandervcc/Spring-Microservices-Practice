@@ -10,15 +10,7 @@ spring:
   cloud:
     gateway:
       routes:
-        - id: customer
-          uri: lb://CUSTOMER-SERVICE
-          predicates:
-            - Path=/customer/**
-        - id: product
-          uri: lb://product-service
-          predicates:
-            - Path=/product/**
-        - id: shopping
-          uri: lb://shopping-service
-          predicates:
-            - Path=/invoice/**
+        discovery:
+          locator:
+            enabled: true
+            lowerCaseServiceId: true
