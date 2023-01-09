@@ -68,7 +68,6 @@ public class InvoiceServiceImpl implements InvoiceService {
 		return invoiceRepository.save(invoiceDB);
 	}
 
-	@CircuitBreaker(name = "customer-service", fallbackMethod = "fallbackCustomerService")
 	@Override
 	public Invoice getInvoice(Long id) {
 		Invoice invoice = invoiceRepository.findById(id)
