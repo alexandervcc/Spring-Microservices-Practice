@@ -9,9 +9,6 @@ eureka:
 spring:
   cloud:
     gateway:
-      discovery:
-        locator:
-          enabled: true
       routes:
       - id: customer
         uri: lb://CUSTOMER-SERVICE
