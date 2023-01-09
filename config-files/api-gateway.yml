@@ -1,16 +1,13 @@
-server:
+sserver:
   port: 8080
-
 eureka:
   client:
     serviceUrl:
       defaultZone: http://localhost:8099/eureka/
-
 spring:
   cloud:
     gateway:
-      routes:
-        discovery:
-          locator:
-            enabled: true
-            lowerCaseServiceId: true
+      discovery:
+        locator:
+          enabled: true
+          lowerCaseServiceId: true
