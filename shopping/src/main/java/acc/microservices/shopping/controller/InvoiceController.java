@@ -14,7 +14,7 @@ import java.util.List;
 
 @RestController
 @AllArgsConstructor
-@RequestMapping("")
+@RequestMapping("/")
 public class InvoiceController {
   private final InvoiceService invoiceService;
 

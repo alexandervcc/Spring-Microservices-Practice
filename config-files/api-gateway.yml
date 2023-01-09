@@ -11,7 +11,7 @@ spring:
     gateway:
       routes:
         - id: customer
-          uri: lb://customer-service
+          uri: lb://CUSTOMER-SERVICE
           predicates:
             - Path=/customer/**
         - id: product
