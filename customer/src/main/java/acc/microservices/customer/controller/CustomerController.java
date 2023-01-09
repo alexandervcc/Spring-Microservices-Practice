@@ -23,7 +23,7 @@ import lombok.AllArgsConstructor;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/v1/customer")
+@RequestMapping("")
 @AllArgsConstructor
 public class CustomerController {
   private final CustomerService customerService;

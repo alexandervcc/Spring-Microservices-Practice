@@ -23,7 +23,7 @@ import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 
 @RestController
-@RequestMapping(path = "/api/v1/product")
+@RequestMapping(path = "")
 @AllArgsConstructor
 public class ProductController {
   private final ProductService productService;
