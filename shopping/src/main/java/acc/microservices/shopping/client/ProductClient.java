@@ -11,13 +11,11 @@ import acc.microservices.shopping.model.pojos.Product;
 
 @FeignClient(name = "product-service")
 public interface ProductClient {
-  final String PRODUCT_PATH = "/api/v1/product";
 
-  @GetMapping(path = PRODUCT_PATH + "/{id}")
-  public ResponseEntity<Product> getProductById(@PathVariable(name = "id") Long productId);
+	@GetMapping(path = "/{id}")
+	public ResponseEntity<Product> getProductById(@PathVariable(name = "id") Long productId);
 
-  @PutMapping(path = PRODUCT_PATH + "/{id}/stock")
-  public ResponseEntity<Product> updateProductStock(
-      @PathVariable(name = "id") Long productId,
-      @RequestParam(name = "qty", required = true) Integer qty);
+	@PutMapping(path = "/{id}/stock")
+	public ResponseEntity<Product> updateProductStock(@PathVariable(name = "id") Long productId,
+			@RequestParam(name = "qty", required = true) Integer qty);
 }

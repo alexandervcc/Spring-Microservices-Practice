@@ -7,10 +7,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 
 import acc.microservices.shopping.model.pojos.Customer;
 
-@FeignClient(name = "customer-service", fallback =  CustomerFallbackConfig.class)
+@FeignClient(name = "customer-service", fallback = CustomerFallbackConfig.class)
 public interface CustomerClient {
-  final String CUSTOMER_PATH = "/api/v1/customer";
 
-  @GetMapping(value = CUSTOMER_PATH + "/{id}")
-  public ResponseEntity<Customer> getCustomer(@PathVariable("id") long id);
+	@GetMapping(value = "/{id}")
+	public ResponseEntity<Customer> getCustomer(@PathVariable("id") long id);
 }
