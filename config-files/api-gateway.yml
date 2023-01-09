@@ -12,16 +12,17 @@ spring:
       discovery:
         locator:
           enabled: true
+          lowerCaseServiceId: true
       routes:
       - id: customer-service
-        uri: lb://customer-service
+        uri: lb://CUSTOMER-SERVICE/
         predicates:
         - Path=/customer/**
       - id: product-service
-        uri: lb://product-service
+        uri: lb://PRODUCT-SERVICE/
         predicates:
         - Path=/product/**
       - id: shopping-service
-        uri: lb://shopping-service
+        uri: lb://SHOPPING-SERVICE/
         predicates:
         - Path=/invoice/**
