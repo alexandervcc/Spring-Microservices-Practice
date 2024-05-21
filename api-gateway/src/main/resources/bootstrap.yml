@@ -1,8 +1,23 @@
 spring:
-  application: 
+  application:
     name: api-gateway
   cloud:
     config:
       uri: http://localhost:8081/
       username: root
       password: secret
+    #gateway:
+    # Automatically maps original routes through gateway, WITHOUT changes
+    #discovery:
+    #  locator:
+    #    enabled: true
+    #    lowerCaseServiceId: true
+
+logging:
+  level:
+    root: INFO
+    org:
+      springframework:
+        cloud:
+          gateway: TRACE
+          "[gateway.route.RouteDefinitionLocator]": INFO
