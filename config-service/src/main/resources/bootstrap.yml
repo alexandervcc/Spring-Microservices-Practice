@@ -7,7 +7,8 @@ spring:
     config:
       server:
         git:
-          uri: https://github.com/alexandervcc/Spring-Microservices-Project
+          # uri: https://github.com/alexandervcc/Spring-Microservices-Project
+          uri: C:\Users\alexa\OneDrive\Documentos\projects\Spring-Microservices-Project
           searchPaths: config-files
   security:
     user:

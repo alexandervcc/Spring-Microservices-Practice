@@ -12,6 +12,12 @@ spring:
     #  locator:
     #    enabled: true
     #    lowerCaseServiceId: true
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          # Spring is intelligent enough to configure the rest of URIs with this base one
+          issuer-uri: http://localhost:8080/realms/spring-microservices
 
 logging:
   level:
