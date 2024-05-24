@@ -11,6 +11,15 @@ import org.springframework.security.web.server.SecurityWebFilterChain;
 public class SecurityConfig {
   @Bean
   public SecurityWebFilterChain springSecurityFilterChain(ServerHttpSecurity serverHttpSecurity) {
-    serverHttpSecurity.csrf().disable();
+    serverHttpSecurity.csrf(csrf -> csrf.disable())
+        .authorizeExchange(exchange -> exchange
+            // Allow request without token, if using this path for eureka resources
+            .pathMatchers("/eureka/**").permitAll()
+            // All other request need to be authenticated
+            .anyExchange().authenticated());
+
+    serverHttpSecurity.oauth2ResourceServer(ServerHttpSecurity.OAuth2ResourceServerSpec::jwt);
+
+    return serverHttpSecurity.build();
   }
 }
