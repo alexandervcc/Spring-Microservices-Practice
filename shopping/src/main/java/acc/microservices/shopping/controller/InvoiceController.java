@@ -3,8 +3,10 @@ package acc.microservices.shopping.controller;
 import acc.microservices.shopping.exceptions.ValidationErrorsException;
 import acc.microservices.shopping.model.Invoice;
 import acc.microservices.shopping.services.interfaces.InvoiceService;
+import io.github.resilience4j.circuitbreaker.annotation.CircuitBreaker;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
@@ -34,12 +36,22 @@ public class InvoiceController {
   }
 
   @PostMapping(path = "")
+  // Enable circuit breaker in this endpoint, using 'invoice' config from
+  // application file. And fallback method when request fail
+  @CircuitBreaker(name = "invoice", fallbackMethod = "fallbackCreateInvoice")
   public ResponseEntity<Invoice> createInvoice(@Valid @RequestBody Invoice invoice, BindingResult validationResult) {
     if (validationResult.hasErrors()) {
       throw new ValidationErrorsException("Invoice data has errors.", validationResult);
     }
     Invoice invoiceDB = this.invoiceService.createInvoice(invoice);
     return ResponseEntity.status(HttpStatus.CREATED).body(invoiceDB);
+  }
+
+  public ResponseEntity<Invoice> fallbackCreateInvoice(Invoice invoice, RuntimeException runtimeException) {
+    Invoice failedInvoice = new Invoice();
+    failedInvoice.setId(-1L);
+    failedInvoice.setDescription("Error creating invoice, try again later.");
+    return ResponseEntity.status(HttpStatus.ACCEPTED).body(failedInvoice);
   }
 
   @PutMapping(value = "/{id}")
