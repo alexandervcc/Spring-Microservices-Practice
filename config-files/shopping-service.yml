@@ -33,12 +33,41 @@ eureka:
     serviceUrl:
       defaultZone: http://eureka-admin:eureka-pass@localhost:8099/eureka/
 
-#Activar actuator
+# Configuracion para Actuator
 management:
+  health:
+    circuitbreakers:
+      # Enable circuit breaker auto configuration
+      enabled: true
   endpoints:
     web:
       exposure:
+        # * to expose all enpoints inside actuator
         include: "*"
+  endpoint:
+    health:
+      # When to show health details
+      show-details: always
+
+#Resilience4j
+resilience4j:
+  circuitbreaker:
+    instances:
+      invoice:
+        # Register/See states of cributi breaker: open -> closed
+        register-health-indicator: true
+        # How much size is added for the events
+        event-consumer-buffer-size: 10
+        # How to handle requests number/time for close/open the circuit
+        sliding-window-type: count-based
+        # Number of request to take into accout when deciding to open/close circuit
+        sliding-window-size: 5
+        # Percentage of request from window size that need to fail, to close the circuit
+        failure-rate-threshold: 50
+        # Time to wait from Open state before changing into half-open
+        wait-duration-in-open-state: 5s
+        permitted-number-of-calls-in-half-open-state: 3
+        automatic-transition-from-open-to-half-open-enabled: true
 
 #Feign Config
 feign:                          
@@ -46,18 +75,3 @@ feign:
     enabled: true               
     alphanumeric-ids:           
       enabled: true             
-
-#Circuit Breaker Config
-resilience4j:                   
-  circuitbreaker:               
-    instances:                  
-      customer-service:
-        registerHealthIndicator: true
-        slidingWindowSize: 10
-        permittedNumberOfCallsInHalfOpenState: 3
-        slidingWindowType: TIME_BASED
-        minimumNumberOfCalls: 20
-        waitDurationInOpenState: 50s
-        failureRateThreshold: 50
-        eventConsumerBufferSize: 10
-
