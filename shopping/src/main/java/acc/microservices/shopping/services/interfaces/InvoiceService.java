@@ -11,7 +11,7 @@ public interface InvoiceService {
 
   public Invoice updateInvoice(Invoice invoice);
 
-  public Invoice deleteInvoice(Long invoiceId);
+  public Invoice deleteInvoice(Integer invoiceId);
 
-  public Invoice getInvoice(Long id);
+  public Invoice getInvoice(Integer id);
 }

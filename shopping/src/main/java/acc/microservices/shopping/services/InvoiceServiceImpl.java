@@ -59,14 +59,14 @@ public class InvoiceServiceImpl implements InvoiceService {
 	}
 
 	@Override
-	public Invoice deleteInvoice(Long invoiceId) {
+	public Invoice deleteInvoice(Integer invoiceId) {
 		Invoice invoiceDB = getInvoice(invoiceId);
 		invoiceDB.setState("DELETED");
 		return invoiceRepository.save(invoiceDB);
 	}
 
 	@Override
-	public Invoice getInvoice(Long id) {
+	public Invoice getInvoice(Integer id) {
 		Invoice invoice = invoiceRepository.findById(id)
 				.orElseThrow(() -> new NotFoundException("Invoice NOT found for provided Id."));
 

@@ -1,6 +1,5 @@
 package acc.microservices.shopping.client;
 
-
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -13,7 +12,10 @@ public class CustomerFallbackConfig implements CustomerClient {
 	@Override
 	public ResponseEntity<Customer> getCustomer(long id) {
 		return ResponseEntity.status(HttpStatus.NOT_FOUND)
-				.body(Customer.builder().id(0L).firstName("Default User").build());
+				.body(Customer.builder()
+						.id(0L)
+						.firstName("Circuit Breaker Error. Default User")
+						.build());
 	}
 
 }

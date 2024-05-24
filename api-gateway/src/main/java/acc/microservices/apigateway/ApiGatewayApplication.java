@@ -22,7 +22,7 @@ public class ApiGatewayApplication {
 				.route("customer-service", r -> r.path("/api/customer/**")
 						.filters(f -> f.stripPrefix(2))
 						.uri("lb://CUSTOMER-SERVICE"))
-				.route("shopping-service", r -> r.path("/api/shoppping/**")
+				.route("shopping-service", r -> r.path("/api/shopping/**")
 						.filters(f -> f.stripPrefix(2))
 						.uri("lb://SHOPPING-SERVICE"))
 				// Main eureka dashboard

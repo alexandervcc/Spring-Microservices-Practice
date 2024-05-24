@@ -53,7 +53,7 @@ management:
 resilience4j:
   circuitbreaker:
     instances:
-      invoice:
+      customer-service:
         # Register/See states of cributi breaker: open -> closed
         register-health-indicator: true
         # How much size is added for the events

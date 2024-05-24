@@ -9,7 +9,7 @@ import org.springframework.stereotype.Repository;
 import acc.microservices.shopping.model.Invoice;
 
 @Repository
-public interface InvoiceRepository extends JpaRepository<Invoice, Long> {
+public interface InvoiceRepository extends JpaRepository<Invoice, Integer> {
   public List<Invoice> findByCustomerId(Long customerId);
 
   public Optional<Invoice> findByNumberInvoice(String numberInvoice);
