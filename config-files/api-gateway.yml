@@ -3,7 +3,7 @@ server:
 eureka:
   client:
     serviceUrl:
-      defaultZone: http://eureka-admin:eureka-pass@localhost:8099/
+      defaultZone: http://eureka-admin:eureka-pass@localhost:8099/eureka/
 # Automatically maps original routes through gateway, NOT CUSTOM ones
 #spring:
 #  cloud:
