@@ -16,10 +16,12 @@ import acc.microservices.shopping.model.pojos.Product;
 // import acc.microservices.shopping.repository.InvoiceItemRepository;
 import acc.microservices.shopping.repository.InvoiceRepository;
 import acc.microservices.shopping.services.interfaces.InvoiceService;
+import io.github.resilience4j.circuitbreaker.annotation.CircuitBreaker;
 import lombok.AllArgsConstructor;
 
 @Service
 @AllArgsConstructor
+@CircuitBreaker(name = "customer-service-circuit")
 public class InvoiceServiceImpl implements InvoiceService {
 	private final InvoiceRepository invoiceRepository;
 	// private final InvoiceItemRepository invoiceItemRepository;

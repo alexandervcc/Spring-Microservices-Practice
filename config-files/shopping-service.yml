@@ -28,10 +28,25 @@ spring:
     openfeign:
       circuitbreaker:
         enabled: true
+        alphanumeric-ids:
+          enabled: true
 eureka:
   client:
     serviceUrl:
       defaultZone: http://eureka-admin:eureka-pass@localhost:8099/eureka/
+
+#Feign Config
+#feign:
+#  circuitbreaker:
+#    enabled: true
+#    alphanumeric-ids:
+#      enabled: true
+#  client:
+#    config:
+#      default:
+#        connectTimeout: 5000
+#        readTimeout: 5000
+#        loggerLevel: full
 
 # Configuracion para Actuator
 management:
@@ -53,7 +68,7 @@ management:
 resilience4j:
   circuitbreaker:
     instances:
-      customer-service:
+      customer-service-circuit:
         # Register/See states of cributi breaker: open -> closed
         register-health-indicator: true
         # How much size is added for the events
@@ -65,13 +80,6 @@ resilience4j:
         # Percentage of request from window size that need to fail, to close the circuit
         failure-rate-threshold: 50
         # Time to wait from Open state before changing into half-open
-        wait-duration-in-open-state: 5s
+        wait-duration-in-open-state: 5
         permitted-number-of-calls-in-half-open-state: 3
         automatic-transition-from-open-to-half-open-enabled: true
-
-#Feign Config
-feign:                          
-  circuitbreaker:               
-    enabled: true               
-    alphanumeric-ids:           
-      enabled: true             
