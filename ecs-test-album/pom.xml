@@ -10,8 +10,8 @@
 		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.appsdeveloperblog</groupId>
-	<artifactId>photo-albums</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<artifactId>AlbumsMicro</artifactId>
+	<version>0.0.1</version>
 	<name>photo-albums</name>
 	<description>Demo project for Spring Boot</description>
 	<properties>
